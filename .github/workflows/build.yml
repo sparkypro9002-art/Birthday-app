@@ -25,20 +25,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
-
-      - name: Accept Android SDK Licenses
-        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
+        run: npm install --legacy-peer-deps
 
       - name: Add Capacitor Android platform
-        run: npx cap add android
-        continue-on-error: true
+        run: |
+          if [ ! -d "android" ]; then
+            npx cap add android
+          fi
 
       - name: Generate App Icons
-        run: npx @capacitor/assets generate --android --iconBackgroundColor '#191a1d'
+        run: |
+          if [ -f "assets/icon.png" ]; then
+            npx @capacitor/assets generate --android --iconBackgroundColor '#191a1d'
+          fi
         continue-on-error: true
 
       - name: Sync web assets to Android
