@@ -27,8 +27,12 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Prepare web assets directory
         run: |
-          npm install --legacy-peer-deps
+          mkdir -p www
+          cp index.html www/
 
       - name: Accept Android SDK Licenses
         run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
