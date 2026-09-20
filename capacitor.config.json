@@ -1,5 +1,5 @@
 {
   "appId": "com.reminder.birthdayprogram",
   "appName": "Remindr",
-  "webDir": "."
+  "webDir": "www"
 }
