@@ -54,7 +54,7 @@ body {
 .app {
   max-width: 600px;
   margin: auto;
-  padding: 24px 18px 100px;
+  padding: 24px 18px calc(140px + env(safe-area-inset-bottom, 0px));
   position: relative;
   z-index: 1;
 }
@@ -250,7 +250,7 @@ h1 {
 /* Floating Action Button */
 .fab {
   position: fixed;
-  bottom: 26px;
+  bottom: calc(70px + env(safe-area-inset-bottom, 0px));
   right: 22px;
   padding: 14px 22px;
   border-radius: 24px;
@@ -294,7 +294,7 @@ h1 {
   border: 1px solid var(--panel-border);
   border-bottom: none;
   border-radius: 28px 28px 0 0;
-  padding: 24px 20px 36px;
+  padding: 24px 20px calc(36px + env(safe-area-inset-bottom, 0px));
   max-height: 88vh;
   overflow-y: auto;
   transform: translateY(100%);
